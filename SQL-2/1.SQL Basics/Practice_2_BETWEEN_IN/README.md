@@ -36,4 +36,6 @@ This query retrieves films where the rental_rate is 0.99, 2.99, or 4.99 and the 
 
 ### Result:
  ![practice 3](images/3.png)
- 
+
+### Conclusion
+These SQL queries demonstrate the use of the WHERE clause with BETWEEN - AND and IN operators to filter specific records from the dvdrental database.
