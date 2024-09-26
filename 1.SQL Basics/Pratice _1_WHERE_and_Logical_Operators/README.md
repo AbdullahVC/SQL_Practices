@@ -10,7 +10,7 @@ This query retrieves the title and description of all films from the film table.
 
 ### Result:
 `images/1.png`
- 
+ ![practice 1](images/1.png)
 ## 2. Retrieve all columns from the film table where the film length is greater than 60 and less than 75.
 ### Query:
 ```sql
