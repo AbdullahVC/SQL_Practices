@@ -19,4 +19,4 @@ The repository is organized as follows:
 
 1. **Clone the repository**:
    ```bash
-   git clone [https://github.com/AbdullahVC/sql-queries-repo.git](https://github.com/AbdullahVC/SQL_Practices.git)
+   git clone https://github.com/AbdullahVC/sql-queries-repo.git
