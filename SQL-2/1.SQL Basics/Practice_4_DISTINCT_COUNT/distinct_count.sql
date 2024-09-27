@@ -1,24 +1,23 @@
-﻿--1.film tablosunda bulunan title ve description sütunlarındaki verileri sıralayınız.
+﻿--1.film tablosunda bulunan replacement_cost sütununda bulunan birbirinden farklı değerleri sıralayınız.
 
-SELECT title, description FROM film
+SELECT DISTINCT replacement_cost FROM film;
 
---2.film tablosunda bulunan tüm sütunlardaki verileri film uzunluğu (length) 60 dan büyük VE 75 ten küçük olma koşullarıyla sıralayınız.
+--2.film tablosunda bulunan replacement_cost sütununda birbirinden farklı kaç tane veri vardır?
 
-SELECT * FROM film
-WHERE length > 60 AND length < 75;
+SELECT COUNT(DISTINCT replacement_cost) FROM film;
 
---3.film tablosunda bulunan tüm sütunlardaki verileri rental_rate 0.99 VE replacement_cost 12.99 VEYA 28.99 olma koşullarıyla sıralayınız.
+--3.film tablosunda bulunan film isimlerinde (title) kaç tanesini T karakteri ile başlar ve aynı zamanda rating 'G' ye eşittir?
 
-SELECT *
-FROM film
-WHERE rental_rate = 0.99 AND (replacement_cost = 12.99 OR replacement_cost = 28.99);
+SELECT COUNT(*) FROM film
+WHERE title LIKE 'T%' AND rating = 'G';
 
---4.customer tablosunda bulunan first_name sütunundaki değeri 'Mary' olan müşterinin last_name sütunundaki değeri nedir?
+--4.country tablosunda bulunan ülke isimlerinden (country) kaç tanesi 5 karakterden oluşmaktadır?
 
-SELECT last_name FROM customer
-WHERE first_name = 'Mary';
+SELECT COUNT(*) FROM country
+WHERE LENGTH(country) = 5;
 
---5.film tablosundaki uzunluğu(length) 50 ten büyük OLMAYIP aynı zamanda rental_rate değeri 2.99 veya 4.99 OLMAYAN verileri sıralayınız.
 
-SELECT * FROM film
-WHERE NOT length > 50 AND rental_rate NOT IN (2.99, 4.99);
+--5.city tablosundaki şehir isimlerinin kaç tanesi 'R' veya r karakteri ile biter?
+
+SELECT COUNT(*) FROM city
+WHERE city LIKE '%R' OR city LIKE '%r';

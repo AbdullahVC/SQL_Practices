@@ -1,62 +1,59 @@
-## 1. Retrieve the `title` and `description` columns from the `film` table.
+## 1. Retrieve distinct values from the replacement_cost column in the film table.
 
 ### Query:
 ```sql
-SELECT title, description FROM film;
+SELECT DISTINCT replacement_cost FROM film;
 ````
 
 ### Explanation:
-This query retrieves the title and description of all films from the film table. It is useful for displaying basic information about the available films in the database.
+This query retrieves the distinct values from the replacement_cost column in the film table, listing the unique values.
 
 ### Result:
  ![practice 1](images/1.png)
-## 2. Retrieve all columns from the film table where the film length is greater than 60 and less than 75.
+
+## 2. Retrieve the number of distinct values in the replacement_cost column in the film table.
 ### Query:
 ```sql
-SELECT * FROM film
-WHERE length > 60 AND length < 75;
+SELECT COUNT(DISTINCT replacement_cost) FROM film;
 ````
 ### Explanation:
-This query retrieves all films where the length is between 60 and 75 minutes. It filters the films based on their duration.
+This query counts how many unique values exist in the replacement_cost column in the film table.
 
 ### Result:
  ![practice 2](images/2.png)
  
-## 3. Retrieve all columns from the film table where rental_rate is 0.99 and replacement_cost is either 12.99 or 28.99.
+## 3. Retrieve the number of film titles that start with the letter 'T' and have a rating of 'G'.
 ### Query:
 ```sql
-SELECT * FROM film
-WHERE rental_rate = 0.99 AND (replacement_cost = 12.99 OR replacement_cost = 28.99);
+SELECT COUNT(*) FROM film
+WHERE title LIKE 'T%' AND rating = 'G';
 ````
 ### Explanation:
-This query filters films based on two conditions: the rental_rate must be 0.99 and the replacement_cost must be either 12.99 or 28.99.
-
+This query counts how many films have titles starting with the letter 'T' and a rating of 'G' in the film table.
 ### Result:
  ![practice 3](images/3.png)
  
-## 4. Retrieve the last_name of the customer where the first_name is 'Mary'.
+## 4. Retrieve the number of country names with exactly 5 characters in the country table.
 ### Query:
 ````sql
-SELECT last_name FROM customer
-WHERE first_name = 'Mary';
+SELECT COUNT(*) FROM country
+WHERE LENGTH(country) = 5;
 ````
 ### Explanation:
-This query looks for customers whose first_name is 'Mary' and retrieves their last_name.
+This query counts how many countries have names that are exactly 5 characters long in the country table.
 
 ### Result:
  ![practice 4](images/4.png)
  
-## 5. Retrieve records from the film table where the length is not greater than 50 and rental_rate is neither 2.99 nor 4.99.
+## 5. Retrieve the number of city names that end with the letter 'R' or 'r' in the city table.
 ### Query:
 ```sql
-SELECT * FROM film
-WHERE NOT length > 50 AND rental_rate NOT IN (2.99, 4.99);
+SELECT COUNT(*) FROM city
+WHERE city LIKE '%R' OR city LIKE '%r';
 ````
 ### Explanation:
-This query retrieves films where the length is 50 minutes or less and excludes those where the rental_rate is 2.99 or 4.99.
+This query counts how many city names end with the letter 'R' or 'r' in the city table.
 
 ### Result:
  ![practice 5](images/5.png)
  
-### Conclusion
-These SQL queries demonstrate the use of the WHERE clause with various conditions and logical operators to retrieve and filter specific records from the `dvdrental` database.
