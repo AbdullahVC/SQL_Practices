@@ -1,28 +1,63 @@
-﻿--1.film tablosunda bulunan filmleri rating değerlerine göre gruplayınız.
+﻿--1.actor ve customer tablolarında bulunan first_name sütunları için tüm verileri sıralayalım.
 
-SELECT rating, COUNT(*) FROM film
-GROUP BY rating;
-
-
---2.film tablosunda bulunan filmleri replacement_cost sütununa göre grupladığımızda film sayısı 50 den fazla olan replacement_cost değerini ve karşılık gelen film sayısını sıralayınız.
-
-SELECT replacement_cost, COUNT(*) FROM film
-GROUP BY replacement_cost
-HAVING COUNT(*) > 50
-ORDER BY COUNT(*) DESC;
+SELECT first_name 
+FROM actor
+UNION ALL
+SELECT first_name 
+FROM customer
+ORDER BY first_name;
 
 
---3.customer tablosunda bulunan store_id değerlerine karşılık gelen müşteri sayılarını nelerdir?
 
-SELECT store_id, COUNT(*) FROM customer
-GROUP BY store_id;
+--2.actor ve customer tablolarında bulunan first_name sütunları için kesişen verileri sıralayalım.
+
+SELECT first_name 
+FROM actor
+INTERSECT
+SELECT first_name 
+FROM customer
+ORDER BY first_name;
 
 
---4. city tablosunda bulunan şehir verilerini country_id sütununa göre gruplandırdıktan sonra en fazla şehir sayısı barındıran country_id bilgisini ve şehir sayısını paylaşınız.
 
-SELECT country_id, COUNT(*) FROM city
-GROUP BY country_id
-ORDER BY COUNT(*) DESC
-LIMIT 1;
+--3.actor ve customer tablolarında bulunan first_name sütunları için ilk tabloda bulunan ancak ikinci tabloda bulunmayan verileri sıralayalım.
+
+SELECT first_name 
+FROM actor
+EXCEPT
+SELECT first_name 
+FROM customer
+ORDER BY first_name;
+
+
+
+--4. İlk 3 sorguyu tekrar eden veriler için de yapalım.
+
+----1. Actor ve Customer tablolarındaki tüm first_name verilerini sıralama (tekrar eden veriler dahil):
+
+SELECT first_name 
+FROM actor
+UNION ALL
+SELECT first_name 
+FROM customer
+ORDER BY first_name;
+----2. Actor ve Customer tablolarındaki first_name sütunları için kesişen (tekrar eden) verileri sıralama:
+
+SELECT a.first_name
+FROM actor a
+JOIN customer c ON a.first_name = c.first_name
+ORDER BY a.first_name;
+----3. Actor tablosunda bulunan ancak Customer tablosunda bulunmayan first_name verilerini sıralama:
+
+SELECT first_name
+FROM actor
+WHERE first_name NOT IN (SELECT first_name FROM customer)
+ORDER BY first_name;
+
+
+
+
+
+
 
 
